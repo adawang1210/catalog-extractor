@@ -1,0 +1,49 @@
+# 暫存
+__pycache__/
+*.pyc
+.DS_Store
+._*
+.Spotlight-V100/
+.fseventsd/
+.TemporaryItems/
+.Trashes/
+# 憑證不入庫(repo 未來可能上雲)
+core/token.json
+# 安裝式插件(可重裝;內含嵌入式 git 庫)
+skills/
+# ── 空間不可抗力排除(2026-07-11,內接碟 1.2G 無法容納 1.7G 全案)──
+# 語料 PDF:Google Drive 可依宣告內 md5 清單逐檔重抓(六批宣告在 output/)
+catalogs/
+catalogs2/
+catalogs3/
+catalogs4/
+catalogs5/
+catalogs6/
+catalogs7/
+# 產線輸出與檢視器:pipeline.py / viewer.py 可重生
+product/
+product_i/
+product_i7/
+viewer/
+product_c7/
+# 案2 回放/基線核對輸出(可重生)
+product_base_check/
+product_replay*/
+
+# ── 公開倉庫安全硬化(2026-07-13,接 GitHub 遠端)──
+# 展示批跑輸出(repo 外 USB;防誤加)
+demo_showcase/
+# 型錄 PDF 與任何裁圖(版權;公開倉庫絕不入)
+*.pdf
+*_crops/
+# 產出資料(code 可重生;公開倉庫只留設計文檔 .md,排除影像/資料)
+output/**/*.png
+output/**/*.csv
+output/**/*.json
+# 來源聲明(含 md5/來源清單=廠商資料)
+output/*_DECLARATION.md
+# OAuth 憑證(token.json 已排;補 backup 與 client_secret)
+core/token*.json
+client_secret*.json
+# 背景任務/暫存輸出
+*.log
