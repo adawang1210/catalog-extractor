@@ -198,13 +198,14 @@ button{font-family:var(--font-body);cursor:pointer}
 .canvaswrap{flex:1;overflow:auto;padding:16px;background:var(--muted)}
 .canvas{position:relative;margin:0 auto;box-shadow:0 1px 4px rgba(9,9,11,.14);background:#fff;max-width:100%}
 .canvas img{display:block;width:100%;height:auto}
-.box{position:absolute;border-radius:2px;cursor:pointer;transition:box-shadow .15s}
-.box.swatch{border:2px solid var(--accent);background:rgba(37,99,235,.07)}
-.box.token{border:2px solid var(--ok);background:rgba(21,128,61,.10)}
-.box.queue{border:2px dashed var(--warn);background:rgba(180,83,9,.08)}
-.box.hint{border:2px dotted #7C3AED;background:rgba(124,58,237,.08)}
-.box.skel{border:2px solid #94A3B8;background:rgba(148,163,184,.10)}
-.box:hover,.box.flash{box-shadow:0 0 0 4px rgba(37,99,235,.35);z-index:5}
+/* 框=透明填充+彩色外框(依類型/disposition 上色),密集頁不被填充糊成一片;加粗 3px 提可見度 */
+.box{position:absolute;border-radius:2px;cursor:pointer;background:transparent;transition:box-shadow .15s}
+.box.swatch{border:3px solid var(--accent)}
+.box.token{border:3px solid var(--ok)}
+.box.queue{border:3px dashed var(--warn)}
+.box.hint{border:3px dotted #7C3AED}
+.box.skel{border:3px solid #94A3B8}
+.box:hover,.box.flash{box-shadow:0 0 0 4px rgba(37,99,235,.35);background:rgba(37,99,235,.10);z-index:5}
 .legend{display:flex;gap:14px;padding:8px 16px;border-top:1px solid var(--border);font-size:12.5px;color:var(--secondary);flex-wrap:wrap}
 .legend i{display:inline-block;width:14px;height:10px;border-radius:2px;margin-right:5px;vertical-align:baseline}
 /* ── A3 每頁處置五態(色碼一致:chip 圓點 / 覆蓋條 / 橫幅)── */
@@ -331,10 +332,12 @@ const STATE_LABEL = %%STATE_LABEL%%;
 function dispoBanner(pg){
   const ps = DATA.pageState[pg]; if(!ps) return "";
   const st = ps.state, lab = STATE_LABEL[st] || st;
+  // B類可見度:此頁已偵測但未自動綁定的框數(佇列/名鍵/骨架)——讓「已進佇列」不被讀成「漏標」
+  const nrev = (boxesByPage[pg] || []).filter(b => b.cls === "queue" || b.cls === "hint" || b.cls === "skel").length;
   const detail = st === "noprod" ? "引擎已掃描此規格頁(偵測 " + ps.sizeHits + " 個尺寸樣式),無可自動綁定產品"
     : st === "nonspec" ? "有文字層但尺寸樣式 " + ps.sizeHits + " <3,引擎未取為規格頁(封面/目錄/內文)"
     : st === "image" ? "無文字層=影像/掃描頁,幾何不可判,登記待 AI/人工(非靜默略過)"
-    : st === "review" ? "此頁候選已分流至待複查佇列(見右側,帶引擎 reason)"
+    : st === "review" ? "此頁已偵測 <b>" + nrev + "</b> 項待複查(已框選=橘/紫/灰外框,見右側佇列)——非漏標,是待人工"
     : "此頁有已自動抽出的產品(見右側綁定結果)";
   return '<div class="dispo ' + st + '">此頁處置:' + lab + ' <small>· ' + detail + '</small></div>';
 }
