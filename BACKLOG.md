@@ -759,6 +759,19 @@ Emil Be-Square p16(16 碼中 9 靜默:EKKQ/EKKR/EKKS/EKKV/EKKW/EKKX/EDPU/EDPW/ED
 會話中曾提「結構槽位消去」新軸=**已撤回**(附錄B:同列詞兇手穿透+PE 型 0 綁定頁
 無槽可學+禁止第六案);**過擬合陷阱 v2(技術 vs 用法框架,含第 5 條「第 N+1 案陷阱」)=附錄C**。
 
+## VLM 金絲雀車道(D 板;2026-07-14 設計草案入庫)
+
+- [ ] **VLM-1|VLM 車道自架設計(草案送審中=output/vlm_selfhost_design_draft.md)**:
+      硬約束=禁中國系模型含衍生品(選模必查底模血統)+只自架不用第三方 API;
+      選型=Mistral Small 3.1/4(Apache 2.0)主力+granite-docling-258M(Apache 2.0)
+      結構前哨;架構=雙層「VLM 提案→PDF 文字層字串驗證+定位」(prov 一律來自
+      文字層,模型座標不信;幻覺結構性歸零於出口端);定位=感測器非綁定器,
+      輸出只進佇列(reason=vlm_candidate,前端標「AI 建議·未驗證」),KPI=省人工
+      分鐘;考卷=②型 62 筆真碼+p16 噪音 25+Topcer 拼磚+Iris+場景照(全部已歸檔
+      證據);分期 P0 手測→P1 探針(通案二分離量測=送審點)→P2 接線→P3 全池。
+      **8 項待查(M-1~M-5/R-1/B-1/B-2)在設計案 §九,回填後升送審版;
+      租 GPU 裸機是否算「不出門」待使用者裁決。**零規則改動承諾照舊。
+
 ## Schema 擴張(SCHEMA v1.0 開票;本輪不實作)
 
 - [ ] **SCH-1|系列敘述欄位抽取**(appearanceDesc/features/applicableSpaces/
