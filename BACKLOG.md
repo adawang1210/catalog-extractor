@@ -771,6 +771,12 @@ Emil Be-Square p16(16 碼中 9 靜默:EKKQ/EKKR/EKKS/EKKV/EKKW/EKKX/EDPU/EDPW/ED
       證據);分期 P0 手測→P1 探針(通案二分離量測=送審點)→P2 接線→P3 全池。
       **8 項待查(M-1~M-5/R-1/B-1/B-2)在設計案 §九,回填後升送審版;
       租 GPU 裸機是否算「不出門」待使用者裁決。**零規則改動承諾照舊。
+      **完整版落地(2026-07-14)**:設計案擴為新 repo 可據以開工的完整版——A/B/C 三選項
+      (否決純 VLM=錯誤方向從「漏」翻「編」+溯源崩+不可重現;採 A 補洞為起點,C 待 P1 數字)、
+      與現有 repo 唯讀資料契約(§三)、資料物件模型 PageTask/VlmProposal/VerifiedCandidate/
+      QueueItem/RunManifest(§四)、新 repo 模組結構 catalog-vlm-lane(§五)、V3 確定性驗證
+      演算法+紅燈先行(§六)、prompt 設計(§八)、bootstrap 清單(§十二)。**使用者擬另開
+      repo 實作 VLM 部分**;現有 repo 僅需小改 C-1(只讀 disposition 匯出或鏡射)+前端框類。
 
 ## 孤兒磁磚圖召回(2026-07-14 設計草案入庫;呈現/召回層,非偵測)
 
